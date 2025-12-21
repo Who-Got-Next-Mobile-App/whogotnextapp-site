@@ -1,36 +1,36 @@
-import Script from "next/script";
+import SiteShell from "@/components/SiteShell";
 
 export default function SubscribePage() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-bold">Subscribe for updates</h1>
-      <p className="mt-3 text-gray-600">
-        Get product updates, feature drops, and merch releases straight to your inbox.
-      </p>
+    <SiteShell
+      title="Subscribe"
+      subtitle="Get product updates and feature drops first."
+      showHero={true}
+    >
+      <div className="card rounded-2xl p-6 max-w-2xl">
+        <h2 className="text-2xl font-bold">Email signup</h2>
+        <p className="mt-2 text-white/70">
+          Hook this to your email provider later. For now, this is the branded landing page.
+        </p>
 
-      <div className="mt-8 rounded-xl border p-6">
-        <div className="text-sm text-gray-500">Signup form</div>
+        <form className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <input
+            type="email"
+            placeholder="you@domain.com"
+            className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-white/30"
+          />
+          <button
+            type="button"
+            className="rounded-xl bg-black px-5 py-3 font-semibold text-white hover:opacity-90"
+          >
+            Subscribe
+          </button>
+        </form>
 
-        <Script
-          src="https://js-na2.hsforms.net/forms/embed/243040861.js"
-          strategy="afterInteractive"
-        />
-
-        <div
-          className="hs-form-frame mt-4"
-          data-region="na2"
-          data-form-id="145f9164-a207-46ec-a684-211da6716f93"
-          data-portal-id="243040861"
-        />
-
-        <noscript className="mt-4 block text-sm text-gray-500">
-          JavaScript is required to load the signup form.
-        </noscript>
+        <p className="mt-3 text-xs text-white/55">
+          No spam. Just updates. Unsubscribe anytime.
+        </p>
       </div>
-
-      <div className="mt-8">
-        <a href="/updates" className="underline">View changelog</a>
-      </div>
-    </main>
+    </SiteShell>
   );
 }

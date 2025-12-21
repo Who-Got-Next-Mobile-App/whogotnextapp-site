@@ -1,45 +1,26 @@
-type UpdateItem = {
-  date: string;
-  title: string;
-  summary: string;
-};
-
-const updates: UpdateItem[] = [
-  {
-    date: "2025-12-21",
-    title: "Website launched",
-    summary: "Public changelog + subscribe page are live.",
-  },
-  {
-    date: "2025-12-21",
-    title: "Merch section added",
-    summary: "Merch page is up. Drops coming soon.",
-  },
-];
+import SiteShell from "@/components/SiteShell";
 
 export default function UpdatesPage() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-bold">Changelog</h1>
-      <p className="mt-3 text-gray-600">
-        Everything new with Who Got Next™ in one place.
-      </p>
+    <SiteShell
+      title="Updates"
+      subtitle="Product drops, fixes, and announcements."
+      showHero={true}
+    >
+      <div className="card rounded-2xl p-6">
+        <div className="text-sm text-white/60">Latest</div>
+        <h2 className="mt-2 text-2xl font-bold">What’s new</h2>
+        <p className="mt-2 text-white/70">
+          This page is ready for your changelog entries. Add posts whenever you ship.
+        </p>
 
-      <div className="mt-10 space-y-4">
-        {updates.map((u) => (
-          <article key={`${u.date}-${u.title}`} className="rounded-xl border p-6">
-            <div className="text-sm text-gray-500">{u.date}</div>
-            <h2 className="mt-2 text-xl font-semibold">{u.title}</h2>
-            <p className="mt-2 text-gray-700">{u.summary}</p>
-          </article>
-        ))}
+        <ul className="mt-6 space-y-3 text-white/75">
+          <li className="rounded-xl border border-white/10 bg-white/5 p-4">
+            <div className="text-sm text-white/60">Coming next</div>
+            <div className="mt-1 font-semibold">Launch updates, merch drops, and app milestones</div>
+          </li>
+        </ul>
       </div>
-
-      <div className="mt-10">
-        <a href="/subscribe" className="underline">
-          Subscribe for updates
-        </a>
-      </div>
-    </main>
+    </SiteShell>
   );
 }

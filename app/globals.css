@@ -1,9 +1,47 @@
 @import "tailwindcss";
 
-/* Optional: site defaults */
 :root {
-  color-scheme: light;
+  --wgn-orange: #F78A3A;
+  --wgn-red: #EE3D2C;
+  --wgn-dark: #2A2A2A;
+  --wgn-border: rgba(255, 255, 255, 0.10);
 }
+
 body {
-  margin: 0;
+  background: #000;
+  color: #fff;
+}
+
+.hero-gradient {
+  background: linear-gradient(180deg, var(--wgn-orange) 0%, var(--wgn-red) 100%);
+}
+
+.hero-noise {
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mix-blend-mode: overlay;
+}
+
+.card {
+  border: 1px solid var(--wgn-border);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.link-accent {
+  color: var(--wgn-orange);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

@@ -1,28 +1,28 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        brand: {
-          orange: "#F78A3A",
-          red: "#EE3D2C",
-          court: "#2A2A2A",
-          border: "#E6E6E6",
-          white: "#FFFFFF",
-        },
+        "brand-orange": "#F78A3A",
+        "brand-red": "#EE3D2C",
+        "brand-court": "#2A2A2A",
+        "brand-border": "#E6E6E6",
       },
       backgroundImage: {
-        "brand-gradient": "linear-gradient(135deg, #F78A3A 0%, #EE3D2C 100%)",
+        "brand-gradient":
+          "linear-gradient(135deg, #F78A3A 0%, #EE3D2C 100%)",
       },
       boxShadow: {
-        glow: "0 0 24px rgba(247, 138, 58, 0.25)",
+        glow: "0 10px 30px rgba(238, 61, 44, 0.35)",
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;
