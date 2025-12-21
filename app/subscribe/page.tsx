@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import SiteShell from "../_components/SiteShell";
 
 export default function SubscribePage() {
   useEffect(() => {
-    // If HubSpot is already loaded, just render the form
     if ((window as any).hbspt) {
       (window as any).hbspt.forms.create({
         region: "na2",
@@ -15,7 +15,6 @@ export default function SubscribePage() {
       return;
     }
 
-    // Load HubSpot forms script once, then render
     const script = document.createElement("script");
     script.src = "https://js-na2.hsforms.net/forms/embed/v2.js";
     script.async = true;
@@ -32,13 +31,10 @@ export default function SubscribePage() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-xl px-6 py-24 text-white">
-      <h1 className="text-4xl font-bold mb-4">Subscribe</h1>
-      <p className="mb-8 text-white/80">
-        Get product drops, feature updates, and early access.
-      </p>
-
-      <div id="hubspot-form" className="rounded-xl bg-white p-6 text-black" />
-    </main>
+    <SiteShell title="Subscribe" subtitle="Get product drops, updates, and early access." showHero>
+      <div className="mx-auto max-w-xl">
+        <div id="hubspot-form" className="rounded-2xl bg-white p-6 text-black" />
+      </div>
+    </SiteShell>
   );
 }
