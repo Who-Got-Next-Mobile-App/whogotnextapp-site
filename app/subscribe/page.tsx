@@ -1,36 +1,44 @@
-import SiteShell from "@/components/SiteShell";
+"use client";
+
+import { useEffect } from "react";
 
 export default function SubscribePage() {
+  useEffect(() => {
+    // If HubSpot is already loaded, just render the form
+    if ((window as any).hbspt) {
+      (window as any).hbspt.forms.create({
+        region: "na2",
+        portalId: "243040861",
+        formId: "145f9164-a207-46ec-a684-211da6716f93",
+        target: "#hubspot-form",
+      });
+      return;
+    }
+
+    // Load HubSpot forms script once, then render
+    const script = document.createElement("script");
+    script.src = "https://js-na2.hsforms.net/forms/embed/v2.js";
+    script.async = true;
+    script.onload = () => {
+      (window as any).hbspt.forms.create({
+        region: "na2",
+        portalId: "243040861",
+        formId: "145f9164-a207-46ec-a684-211da6716f93",
+        target: "#hubspot-form",
+      });
+    };
+
+    document.body.appendChild(script);
+  }, []);
+
   return (
-    <SiteShell
-      title="Subscribe"
-      subtitle="Get product updates and feature drops first."
-      showHero={true}
-    >
-      <div className="card rounded-2xl p-6 max-w-2xl">
-        <h2 className="text-2xl font-bold">Email signup</h2>
-        <p className="mt-2 text-white/70">
-          Hook this to your email provider later. For now, this is the branded landing page.
-        </p>
+    <main className="mx-auto max-w-xl px-6 py-24 text-white">
+      <h1 className="text-4xl font-bold mb-4">Subscribe</h1>
+      <p className="mb-8 text-white/80">
+        Get product drops, feature updates, and early access.
+      </p>
 
-        <form className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <input
-            type="email"
-            placeholder="you@domain.com"
-            className="w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-white/30"
-          />
-          <button
-            type="button"
-            className="rounded-xl bg-black px-5 py-3 font-semibold text-white hover:opacity-90"
-          >
-            Subscribe
-          </button>
-        </form>
-
-        <p className="mt-3 text-xs text-white/55">
-          No spam. Just updates. Unsubscribe anytime.
-        </p>
-      </div>
-    </SiteShell>
+      <div id="hubspot-form" className="rounded-xl bg-white p-6 text-black" />
+    </main>
   );
 }
