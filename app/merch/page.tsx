@@ -1,6 +1,12 @@
 import SiteShell from "../_components/SiteShell";
+import ShopifyProducts from "@/components/ShopifyProducts";
 
 export default function MerchPage() {
+  // TODO: Replace with your actual Storefront API access token
+  // Get this from: Shopify Admin > Settings > Apps and sales channels > Develop apps
+  const STOREFRONT_ACCESS_TOKEN = "YOUR_STOREFRONT_ACCESS_TOKEN_HERE";
+  const STORE_DOMAIN = "who-got-next-app.myshopify.com";
+
   return (
     <SiteShell>
       <section className="mx-auto max-w-6xl px-6 py-16">
@@ -9,12 +15,11 @@ export default function MerchPage() {
           Rep the brand. Built for hoopers and pickleballers.
         </p>
 
-        <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-6">
-          <div className="text-sm text-white/60">Coming soon</div>
-          <div className="mt-2 text-lg font-semibold">Storefront</div>
-          <p className="mt-2 text-sm text-white/55">
-            Drop tees, hoodies, and court essentials here.
-          </p>
+        <div className="mt-10">
+          <ShopifyProducts
+            storeDomain={STORE_DOMAIN}
+            storefrontAccessToken={STOREFRONT_ACCESS_TOKEN}
+          />
         </div>
       </section>
     </SiteShell>
