@@ -35,6 +35,7 @@ export default function ShopifyProducts({
         const client = Client.buildClient({
             domain: storeDomain,
             storefrontAccessToken: storefrontAccessToken,
+            apiVersion: '2024-10',
         });
 
         // Fetch products
@@ -52,26 +53,51 @@ export default function ShopifyProducts({
     }, [storeDomain, storefrontAccessToken]);
 
     const handleBuyNow = async (variantId: string) => {
+        console.log('🛒 Buy button clicked!');
+        console.log('Variant ID:', variantId);
+        console.log('Store Domain:', storeDomain);
+        console.log('Token exists:', !!storefrontAccessToken);
+
         try {
             // Initialize client
             const client = Client.buildClient({
                 domain: storeDomain,
                 storefrontAccessToken: storefrontAccessToken,
+                apiVersion: '2024-10',
             });
 
+            console.log('✅ Client initialized');
+
             // Create checkout
+            console.log('📝 Creating checkout...');
             const checkout: any = await client.checkout.create();
+            console.log('✅ Checkout created:', checkout);
 
             // Add item to checkout
+            console.log('➕ Adding item to checkout...');
             const checkoutWithItem = await client.checkout.addLineItems(checkout.id, [
                 { variantId, quantity: 1 },
             ]);
+            console.log('✅ Item added to checkout:', checkoutWithItem);
+            console.log('🔗 Checkout URL:', checkoutWithItem.webUrl);
 
             // Redirect to Shopify checkout
-            window.open(checkoutWithItem.webUrl, '_blank');
+            if (checkoutWithItem.webUrl) {
+                console.log('🚀 Redirecting to checkout...');
+                window.location.href = checkoutWithItem.webUrl;
+            } else {
+                throw new Error('No checkout URL received');
+            }
         } catch (err: unknown) {
-            console.error('Error creating checkout:', err);
-            alert('Failed to create checkout. Please try again.');
+            console.error('❌ Error creating checkout:', err);
+
+            // More detailed error message
+            let errorMessage = 'Failed to create checkout. ';
+            if (err instanceof Error) {
+                errorMessage += err.message;
+            }
+
+            alert(errorMessage + '\n\nPlease check the browser console for details.');
         }
     };
 
