@@ -36,8 +36,16 @@ export default function SiteShell({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
 
-      <footer className="border-t border-white/10 py-10 text-center text-xs text-white/40">
-        © {new Date().getFullYear()} Who Got Next™
+      <footer className="border-t border-white/10 py-10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-4 px-6 text-xs text-white/40">
+          <div>© {new Date().getFullYear()} Who Got Next™</div>
+          <Link 
+            href="/privacy-policy.html" 
+            className="text-white/60 hover:text-white/80 transition-colors"
+          >
+            Privacy Policy
+          </Link>
+        </div>
       </footer>
     </div>
   );
