@@ -30,21 +30,22 @@ export default function SiteShell({ children }: { children: ReactNode }) {
             <Link className="hover:text-white" href="/merch">
               Merch
             </Link>
+            <Link className="hover:text-white font-medium text-[#F78A3A]" href="/support">
+              Support
+            </Link>
           </nav>
         </div>
       </header>
 
       <main>{children}</main>
 
-      <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-4 px-6 text-xs text-white/40">
+      <footer className="border-t border-white/10 py-10 text-center text-xs text-white/40">
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex gap-6">
+            <Link href="/support" className="hover:text-white transition-colors text-white/60">Support</Link>
+            <Link href="/privacy-policy.html" className="hover:text-white transition-colors text-white/60">Privacy Policy</Link>
+          </div>
           <div>© {new Date().getFullYear()} Who Got Next™</div>
-          <Link 
-            href="/privacy-policy.html" 
-            className="text-white/60 hover:text-white/80 transition-colors"
-          >
-            Privacy Policy
-          </Link>
         </div>
       </footer>
     </div>

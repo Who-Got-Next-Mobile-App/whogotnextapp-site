@@ -44,7 +44,7 @@ export default function HomePage() {
         {/* Cards section */}
         <div className="bg-black">
           <div className="mx-auto max-w-6xl px-6 py-16">
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               <Card
                 title="Updates"
                 headline="See what’s new"
@@ -65,6 +65,13 @@ export default function HomePage() {
                 desc="Clean gear. Fast shipping. Built for hoopers and pickleballers."
                 href="/merch"
                 cta="Shop merch →"
+              />
+              <Card
+                title="Support"
+                headline="Get help"
+                desc="Need assistance? Our support team is here to help you get back on the court."
+                href="/support"
+                cta="Get support →"
               />
             </div>
           </div>
