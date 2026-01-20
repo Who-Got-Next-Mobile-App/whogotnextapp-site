@@ -1,11 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  trailingSlash: true,
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
+  // trailingSlash: true, // potentially causing 404s on Amplify SSR
 };
 
 export default nextConfig;
