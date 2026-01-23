@@ -9,7 +9,6 @@ frontend:
     build:
       commands:
         - npm run build
-        - echo '{"version":1,"config":{},"appDir":false,"files":[],"ignore":[]}' > out/required-server-files.json
   artifacts:
     baseDirectory: out
     files:
