@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "shopify-buy": "^3.0.7"
-  },
-  "devDependencies": {
+    "lucide-react": "^0.469.0",
     "next": "16.1.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "shopify-buy": "^3.0.7"
+  },
+  "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
