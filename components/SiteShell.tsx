@@ -71,8 +71,20 @@ export default function SiteShell({
       <main className="mx-auto max-w-6xl px-6 py-12">{children}</main>
 
       <footer className="border-t border-white/10 py-10">
-        <div className="mx-auto max-w-6xl px-6 text-sm text-white/60">
-          © {new Date().getFullYear()} Who Got Next<span className="align-super text-[10px]">™</span>
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-sm text-white/60">
+              © {new Date().getFullYear()} Who Got Next<span className="align-super text-[10px]">™</span>
+            </div>
+            <nav className="flex gap-6 text-sm">
+              <Link href="/privacy" className="text-white/60 hover:text-white transition">
+                Privacy
+              </Link>
+              <Link href="/support" className="text-white/60 hover:text-white transition">
+                Support
+              </Link>
+            </nav>
+          </div>
         </div>
       </footer>
     </div>
