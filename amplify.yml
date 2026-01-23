@@ -9,13 +9,8 @@ frontend:
     build:
       commands:
         - npm run build
-        - cp package.json .next/package.json
-        - cp package-lock.json .next/package-lock.json
-        - cp next.config.mjs .next/next.config.mjs
-        - cp -r node_modules .next/node_modules
-        - cp -r public .next/public
   artifacts:
-    baseDirectory: .next
+    baseDirectory: out
     files:
       - "**/*"
   cache:

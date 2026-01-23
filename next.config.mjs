@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Empty config - using default SSR behavior
+    output: 'export',
 };
 
 export default nextConfig;
